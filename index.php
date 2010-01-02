@@ -9,5 +9,14 @@
  */
 
 
+//Require config file
+require_once('inc/config.php');
+
+//Require classes files
+require_once('inc/classes/page.php');
+
+//Initialize classes
+
+$page = new Page('Alia');
 
 ?>
