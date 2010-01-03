@@ -34,11 +34,11 @@ class page {
      * Metoda, která zjistí info z javascript
      */
 
-    public function get_infos($strs){
+    public function get_infos($strs,$start=0){
 
         foreach($strs as $value){
 
-            $tmp = $this->get_info($value);
+            $tmp = $this->get_info($value,$start);
 
             //Clean "" from chars
             if($tmp[0]=="\"") $return[] = substr($tmp,1,strlen($tmp)-2);
@@ -48,9 +48,9 @@ class page {
         return $return;
     }
 
-    private function get_info($parse_str) {
+    private function get_info($parse_str,$start) {
         
-        $pos1 = strpos($this->page,$parse_str);
+        $pos1 = strpos($this->page,$parse_str,$start);
         $pos2 = strpos($this->page,';',$pos1);
         $pos1 += 3 + strlen($parse_str);
         return substr($this->page,$pos1,$pos2-$pos1);
