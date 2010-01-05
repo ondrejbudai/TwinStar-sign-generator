@@ -58,7 +58,7 @@ if($base_info[1]!= 'Rogue' && $base_info[1]!= 'Warrior'){
 }
 
 //Get settings for char from database
-$result = $mysqli->query("SELECT st.parent, st.var_name, st.name
+$result = $mysqli->query("SELECT st.parent, st.var_name, st.name, st.postfix
     FROM stats_template st, characters_stats s, characters c
     WHERE c.name='{$char}'
     AND c.cid=s.cid
@@ -66,9 +66,15 @@ $result = $mysqli->query("SELECT st.parent, st.var_name, st.name
     LIMIT 0,4");
 $y=7;
 while($value = $result->fetch_assoc()){
-    $pos = strpos($page->page,"function {$value['parent']}Object(");
-    $data = $page->get_infos(array("this.{$value['var_name']}"),$pos);
-    $image->write_text(8,330,$y,'orange',"{$value['name']}: {$data[0]}",N);
+    if($value['parent']=='SCRIPT'){
+        $fce = "parse_{$value['var_name']}";
+        $data[0] = $fce();
+    }
+    else {
+        $pos = strpos($page->page,"function {$value['parent']}Object(");
+        $data = $page->get_infos(array("this.{$value['var_name']}"),$pos);
+    }
+    $image->write_text(8,330,$y,'orange',"{$value['name']}: {$data[0]}{$value['postfix']}",N);
     $y += 13;
 }
 

@@ -4,6 +4,8 @@
  *
  */
 
+require_once('etc/parse_stats.php');
+
 class page {
 
     public $page;
@@ -57,7 +59,7 @@ class page {
     }
 
     public function get_race($id){
-        $return = array('Human','Orc','Dwarf','Night Elf','Undead','Tauren','Gnome','Troll','','Blood Elf','Draenei');
+        static $return = array('Human','Orc','Dwarf','Night Elf','Undead','Tauren','Gnome','Troll','','Blood Elf','Draenei');
         return $return[$id-1];
     }
 
