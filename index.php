@@ -22,6 +22,7 @@ else{
         if(strpos($tmp,'Přetížení webu / Website overloaded'))get_frontend_form('Armory je přetížené, zkuste to prosím znovu za chvíli!');
 
         $name = $mysqli->real_escape_string($_POST['name']);
+        $name = ucfirst($name);
         $result = $mysqli->query("INSERT INTO characters (name) VALUES ('{$name}')");
         $result = $mysqli->query("SELECT LAST_INSERT_ID() AS cid");
         $cid = $result->fetch_assoc();
