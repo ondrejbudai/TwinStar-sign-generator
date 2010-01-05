@@ -32,7 +32,7 @@ else{
         foreach($_POST['stat'] as $value){
             if($value!='no'){
                 $value = $mysqli->real_escape_string($value);
-                $query .= "({$cid['cid']},{$value}),";
+                $query .= "({$cid},{$value}),";
             }
         }
         if(!empty($query)){
