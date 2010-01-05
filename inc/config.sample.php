@@ -1,6 +1,6 @@
 <?php
 //DO NOT CHANGE!!!
-$core = 6;
+$core = 7;
 
 //Mysql server
 $config['mysql']['server'] = 'localhost';
@@ -17,5 +17,8 @@ $config['mysql']['database'] = 'database';
 //Set file with TrueType font
 $config['font']['normal'] = 'inc/etc/verdana.ttf';
 $config['font']['bold'] = 'inc/etc/verdanab.ttf';
+
+//Set server
+$config['server'] = 'server';
 
 ?>

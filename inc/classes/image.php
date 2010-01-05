@@ -36,14 +36,13 @@ class image {
     }
 
     public function show_image(){
+        global $cid;
 
         //Show image in gif format
-        imagegif($this->image,'tmp.gif');
+        imagegif($this->image,"img/{$cid}.gif");
 
         //Destroy image
         imagedestroy($this->image);
-
-        echo '<img src="tmp.gif" />';
     }
 
     public function write_text($size,$x,$y,$color,$text,$font_type){
