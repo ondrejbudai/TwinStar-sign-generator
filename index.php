@@ -7,6 +7,7 @@
     <body>
 
 <?php
+
 require_once('inc/config.php');
 require_once('inc/frontend_form.php');
 
@@ -16,10 +17,10 @@ if(!isset($_POST['skript']))get_frontend_form();
 else{
     if(isset($_POST['stat']) && isset($_POST['name'])){
         $ctx = stream_context_create(array('http' => array('timeout' => 15)));
-        $tmp = @file_get_contents ("http://armory.twinstar.cz/index.php?searchType=profile&character={$_POST['name']}&realm=Twinstar",0,$ctx);
-        if(!$tmp)get_frontend_form('Armory je dočasně nedostupná zkuste to prosím za chvíli!');
-        if(strpos($tmp,'Error - character'))get_frontend_form("Postava s nickem \"{$_POST['name']}\" nebyla nalezena!");
-        if(strpos($tmp,'Přetížení webu / Website overloaded'))get_frontend_form('Armory je přetížené, zkuste to prosím znovu za chvíli!');
+        $armory = @file_get_contents ("http://armory.twinstar.cz/index.php?searchType=profile&character={$_POST['name']}&realm=Twinstar",0,$ctx);
+        if(!$armory)get_frontend_form('Armory je dočasně nedostupná zkuste to prosím za chvíli!');
+        if(strpos($armory,'Error - character'))get_frontend_form("Postava s nickem \"{$_POST['name']}\" nebyla nalezena!");
+        if(strpos($armory,'Přetížení webu / Website overloaded'))get_frontend_form('Armory je přetížené, zkuste to prosím znovu za chvíli!');
 
         $name = $mysqli->real_escape_string($_POST['name']);
         $name = ucfirst($name);

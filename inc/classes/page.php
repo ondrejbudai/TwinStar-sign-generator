@@ -16,24 +16,9 @@ class page {
      * Poté zkotroluje, jestli postava existuje, pokud ne, metoda vrátí 0, pokud ano, vrátí 1.
      */
 
-    public function __construct($char){
-        $ctx = stream_context_create(array('http' => array('timeout' => 15)));
-        $tmp = @file_get_contents ("http://armory.twinstar.cz/index.php?searchType=profile&character={$char}&realm=Twinstar",0,$ctx);
-
-        if($tmp) {
-            if(!strpos($tmp,'Error - character') && !strpos($tmp,'Přetížení webu / Website overloaded')){
-                $this->page = $tmp;
-                return true;
-            }
-            else {
-                global $mysqli,$cid;
-                $mysqli->query("DELETE FROM characters WHERE cid={$cid}");
-                $mysqli->query("DELETE FROM characters_stats WHERE cid={$cid}");
-                exit;
-            }
-
-        }
-        else exit;
+    public function __construct(){
+        global $armory;
+        $page->page = $armory;
 
     }
 
