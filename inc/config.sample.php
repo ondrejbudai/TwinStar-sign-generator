@@ -1,6 +1,6 @@
 <?php
 //DO NOT CHANGE!!!
-$core = 9;
+$core = 10;
 
 //Mysql server
 $config['mysql']['server'] = 'localhost';

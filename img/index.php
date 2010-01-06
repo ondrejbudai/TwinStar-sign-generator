@@ -7,8 +7,6 @@ $q = substr($q,0,$pos1);
 
 if(!is_numeric($q))exit;
 header('Content-type: image/gif');
-$image = imagecreatefromgif("./{$q}.gif");
-imagegif($image);
-imagedestroy($image);
+require("./{$q}.gif");
 
 ?>
