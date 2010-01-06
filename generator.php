@@ -19,7 +19,7 @@ require_once('inc/classes/page.php');
 require_once('inc/classes/image.php');
 
 //Initialize classes
-$page = new page($char);
+$page = new page();
 $image = new image();
 
 //Write name

@@ -18,7 +18,7 @@ class page {
 
     public function __construct(){
         global $armory;
-        $page->page = $armory;
+        $this->page = $armory;
 
     }
 
